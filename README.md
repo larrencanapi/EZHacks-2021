@@ -10,3 +10,5 @@ Bot Commands
 * $lyric songname  - get lyrics for a song
 * $quote songname  - quote a random lyric from the song
 * $karaoke         - get a random song to sing to
+
+Devpost Link: https://devpost.com/software/discord-karaoke-bot
