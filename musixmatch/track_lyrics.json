@@ -1,0 +1,48 @@
+{
+    "version": 1,
+    "request": {
+        "url": "http://api.musixmatch.com/ws/1.1/track.lyrics.get",
+        "method": "GET",
+        "authorization": {
+            "type": "QueryParam",
+            "keyParam": "apikey"
+        },
+        "params": {
+            "commontrack_id": true,
+            "track_id": false
+        },
+        "pagination": {
+            "type": "page",
+            "pageKey": "page",
+            "limitKey": "page_size",
+            "maxCount": 100
+        }
+    },
+    "response": {
+        "ctype": "application/json",
+        "tablePath": "$.message.body.lyrics",
+        "schema": {
+            "restricted": {
+              "target": "$.restricted",
+              "type": "int"
+            },
+            "lyrics_id": {
+                "target": "$.lyrics_id",
+                "type": "int"
+            },
+            "instrumental": {
+                "target": "$.instrumental",
+                "type": "string"
+            },
+            "lyrics_body": {
+                "target": "$.lyrics_body",
+                "type": "string"
+            },
+            "lyrics_language": {
+                "target": "$.lyrics_language",
+                "type": "string"
+            }
+        },
+        "orient": "records"
+    }
+}

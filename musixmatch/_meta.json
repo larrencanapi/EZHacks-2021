@@ -1,0 +1,6 @@
+{
+    "tables": [
+        "track_lyrics",
+        "track_matches"
+    ]
+}
