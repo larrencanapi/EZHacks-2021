@@ -2,7 +2,7 @@
 
 ### Please add the Appropriate API Keys if you want to use the Bot
 
-Discord Karaoke Bot that allows you to query for songs on Youtube and Lyrics using the DataPrep library in Python. Discord Bot Coded in Python and ran in Repl.it. Uses the MusixMatch and Youtube Api's. EZHacks 2021 Team Submission
+Discord Karaoke Bot that allows you to query for songs on Youtube and Lyrics using the DataPrep library in Python. Discord Bot coded in Python and ran in Repl.it. Uses the MusixMatch and Youtube Api's. EZHacks 2021 Team Submission
 
 Bot Commands
 
