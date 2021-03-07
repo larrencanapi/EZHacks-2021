@@ -1,2 +1,2 @@
 # EZHacks-2021
-  - Karaoke bot for Discord 
+# Please add the Appropriate Keys if you want to use the Bot
