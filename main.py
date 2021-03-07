@@ -15,15 +15,14 @@ starter_singing = [
   ]
 
 async def get_lyrics(song_name):
-  #https://www.youtube.com/watch?v=
-  print("get_lyrics")
-  conn = connect('./musixmatch', _auth={'access_token':'musixmatchToken'}, _concurrency=3)
-  track_id = await conn.query('track_matches', q_track=song_name)
-  commontrack_id = track_id['commontrack_id']
-  lyrics = await conn.query('track_lyrics',commontrack_id=commontrack_id[0])
-  #print(lyrics['lyrics_body'][0])
-  return lyrics['lyrics_body'][0]
-
+  try:  
+    conn = connect('./musixmatch', _auth={'access_token':'musixmatchToken'}, _concurrency=3)
+    track_id = await conn.query('track_matches', q_track=song_name)
+    commontrack_id = track_id['commontrack_id']
+    lyrics = await conn.query('track_lyrics',commontrack_id=commontrack_id[0])
+    return lyrics['lyrics_body'][0]
+  except Exception:
+    return "Sorry, No Lyrics Available :("
 @client.event
 # ready to start when begin to be used
 async def on_ready():      
@@ -54,23 +53,25 @@ async def random_song_name():
 
 
 async def quote_lyric(song_name):
-  #print("get_lyrics")
-  conn = connect('./musixmatch', _auth={'access_token':'musixmatchToken'}, _concurrency=3)
-  track_id = await conn.query('track_matches', q_track=song_name)
-  commontrack_id = track_id['commontrack_id']
-  lyrics = await conn.query('track_lyrics',commontrack_id=commontrack_id[0])
+  try:
+    conn = connect('./musixmatch', _auth={'access_token':'musixmatchToken'}, _concurrency=3)
+    track_id = await conn.query('track_matches', q_track=song_name)
+    commontrack_id = track_id['commontrack_id']
+    lyrics = await conn.query('track_lyrics',commontrack_id=commontrack_id[0])
 
-  #print(lyrics['lyrics_body'][0])
-  lyricArray = lyrics['lyrics_body'][0].split("\n")
-  resultArray = list(filter(None, lyricArray))
-  resultArray.pop()
+    #print(lyrics['lyrics_body'][0])
+    lyricArray = lyrics['lyrics_body'][0].split("\n")
+    resultArray = list(filter(None, lyricArray))
+    resultArray.pop()
 
-  resultString = random.choice(resultArray)
-  
-  resultString = "\"" + resultString + "\"" + "\n"
-  resultString = resultString + "  - " + song_name
-  
-  return resultString
+    resultString = random.choice(resultArray)
+
+    resultString = "\"" + resultString + "\"" + "\n"
+    resultString = resultString + "  - " + song_name
+
+    return resultString
+  except Exception:
+    return "Sorry, No Lyrics Available :("
   #return lyrics['lyrics_body'][0]
 
 async def help_command():
